@@ -1,16 +1,12 @@
 package net.javaguides.hibernate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
+import net.javaguides.hibernate.entity.Employee;
+import net.javaguides.hibernate.entity.Person;
+import net.javaguides.hibernate.entity.Student;
+import net.javaguides.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import net.javaguides.hibernate.entity.Student;
-import net.javaguides.hibernate.util.HibernateUtil;
-import org.hibernate.engine.transaction.internal.TransactionImpl;
 
 public class App {
     public static void main(String[] args) {
@@ -18,36 +14,19 @@ public class App {
 
         Transaction transaction = null;
 
-        List<Transaction> transactions = new ArrayList<>();
-        List<Session> sessions= new ArrayList<>();
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        try {
-            for (int i = 0; i < 5; i++) {
-                Student student = new Student("Ramesh", "Fadatare", "rameshfadatare@javaguides.com");
-                Student student1 = new Student("John", "Cena", "john@javaguides.com");
+        try (SessionFactory sessionFactory = HibernateUtil.getSessionFactory()) {
 
-                Session session = sessionFactory.openSession();
-                sessions.add(session);
+            Person person1 = new Student("Ramesh", "Fadatare", "rameshfadatare@javaguides.com");
+            Person person2 = new Employee("John", "Cena", "john@javaguides.com");
 
-                // start a transaction
-                transaction = session.beginTransaction();
-                transactions.add(transaction);
-                // save the student objects
-                session.save(student);
-                session.save(student1);
-            }
+            Session session = sessionFactory.getCurrentSession();
 
-            for (Transaction transaction1 : transactions) {
-
-                // commit transaction
-                transaction1.commit();
-            }
-            for (Session session : sessions) {
-                session.close();
-
-            }
-
-            sessionFactory.close();
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student objects
+            session.save(person1);
+            session.save(person2);
+            transaction.commit();
 
         } catch (Exception e) {
             if (transaction != null) {

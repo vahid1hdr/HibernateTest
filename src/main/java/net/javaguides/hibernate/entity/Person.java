@@ -1,21 +1,37 @@
 package net.javaguides.hibernate.entity;
 
+import javax.persistence.*;
+
 /**
  * Created by v.heydari on
- * 9/6/2020 6:02 PM
+ * 9/7/2020 3:09 PM
  */
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 public class Person {
-    private int age;
+
+    @Id
+    @GeneratedValue
+    private int id;
     private String firstName;
     private String lastName;
 
-    public int getAge() {
-        return age;
+    public Person() {
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
