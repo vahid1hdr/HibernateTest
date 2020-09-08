@@ -1,5 +1,6 @@
 package net.javaguides.hibernate;
 
+import net.javaguides.hibernate.entity.Car;
 import net.javaguides.hibernate.entity.Employee;
 import net.javaguides.hibernate.entity.Person;
 import net.javaguides.hibernate.entity.Student;
@@ -16,7 +17,7 @@ public class App {
 
         try (SessionFactory sessionFactory = HibernateUtil.getSessionFactory()) {
 
-            Person person1 = new Student("Ramesh", "Fadatare", "rameshfadatare@javaguides.com");
+            Person person1 = new Student("Ramesh", "Fadatare", "rameshfadatare@javaguides.com", new Car("BMW"));
             Person person2 = new Employee("John", "Cena", "john@javaguides.com");
 
             Session session = sessionFactory.getCurrentSession();

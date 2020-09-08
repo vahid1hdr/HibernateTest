@@ -28,5 +28,6 @@
         <mapping class="net.javaguides.hibernate.entity.Student" />
         <mapping class="net.javaguides.hibernate.entity.Person" />
         <mapping class="net.javaguides.hibernate.entity.Employee" />
+        <mapping class="net.javaguides.hibernate.entity.Car" />
     </session-factory>
 </hibernate-configuration>
