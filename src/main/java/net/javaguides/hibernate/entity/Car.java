@@ -3,6 +3,7 @@ package net.javaguides.hibernate.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * Created by v.heydari on
@@ -16,6 +17,9 @@ public class Car {
     @GeneratedValue
     private int id;
     private String name;
+
+    @OneToOne(mappedBy = "car")
+    private Student student;
 
     public Car() {
     }
@@ -38,5 +42,13 @@ public class Car {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

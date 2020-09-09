@@ -17,8 +17,8 @@ public class App {
 
         try (SessionFactory sessionFactory = HibernateUtil.getSessionFactory()) {
 
-            Person person1 = new Student("Ramesh", "Fadatare", "rameshfadatare@javaguides.com", new Car("BMW"));
-            Person person2 = new Employee("John", "Cena", "john@javaguides.com");
+            Person person1 = new Student("Ramesh", "Fadatare", "rameshfadatare@javaguides.com", new Car("mbw"));
+//            Person person2 = new Employee("John", "Cena", "john@javaguides.com");
 
             Session session = sessionFactory.getCurrentSession();
 
@@ -26,9 +26,14 @@ public class App {
             transaction = session.beginTransaction();
             // save the student objects
             session.save(person1);
-            session.save(person2);
-            transaction.commit();
+//            session.save(person2);
 
+
+            Student student = session.get(Student.class, person1.getId());
+            Car car = student.getCar();
+            Student person = car.getStudent();
+
+            transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

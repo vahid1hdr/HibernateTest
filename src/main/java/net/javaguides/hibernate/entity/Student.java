@@ -1,10 +1,17 @@
 package net.javaguides.hibernate.entity;
 
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student extends Person {
     private String studentNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "carId")
     private Car car;
 
     public Student() {

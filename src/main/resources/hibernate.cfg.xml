@@ -5,9 +5,15 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/world</property>
-        <property name="connection.username">vahid</property>
-        <property name="connection.password">Vahid@123</property>
+
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/world</property>-->
+        <!--<property name="connection.username">vahid</property>-->
+        <!--<property name="connection.password">Vahid@123</property>-->
+
+        <property name="connection.url">jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12364693</property>
+        <property name="connection.username">sql12364693</property>
+        <property name="connection.password">saD8X11lgp</property>
+
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">6</property>
         <!-- Select our SQL dialect -->
