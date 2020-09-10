@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 
 public class TestConnection {
     public static void main(String[] args) {
-
 //        String url = "jdbc:mysql://127.0.0.1:3306";
 //        String username = "root";
 //        String password = "Vahid@123";
